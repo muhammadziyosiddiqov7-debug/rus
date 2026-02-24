@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Супер Машина</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background: #0f0f0f;
+            color: white;
+            overflow-x: hidden
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav h1 {
+            color: #ff0000
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: .3s
+        }
+
+        nav a:hover {
+            color: #ff0000
+        }
+
+        /* Toggle button */
+        #langToggle {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ff0000;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1600') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            margin-bottom: 20px
+        }
+
+        .hero button {
+            padding: 15px 40px;
+            border: none;
+            background: #ff0000;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .hero button:hover {
+            transform: scale(1.1);
+            background: white;
+            color: #ff0000
+        }
+
+        /* SECTION */
+        section {
+            padding: 100px 50px
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+            color: #ff0000
+        }
+
+        /* SWIPER */
+        .infiniteSwiper .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
+
+        .infiniteSwiper .swiper-slide {
+            width: 400px;
+            height: 250px;
+        }
+
+        .infiniteSwiper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        /* BRAND CARDS */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .brand-card {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .4s;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+        }
+
+        .brand-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .brand-info {
+            padding: 20px
+        }
+
+        .brand-info h3 {
+            color: #ff0000;
+            margin-bottom: 10px
+        }
+
+        /* VIDEO */
+        .video-section iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111;
+            margin-top: 50px;
+        }
+
+        @media(max-width:768px) {
+            .hero h2 {
+                font-size: 30px
+            }
+
+            .infiniteSwiper .swiper-slide {
+                width: 250px;
+                height: 160px
+            }
+
+            .video-section iframe {
+                height: 250px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h1 data-ru="Моя Супер Машина" data-uz="Mening Super Mashinam">Моя Супер Машина</h1>
+        <ul>
+            <li><a href="#home" data-ru="Главная" data-uz="Bosh sahifa">Главная</a></li>
+            <li><a href="#gallery" data-ru="Галерея" data-uz="Galereya">Галерея</a></li>
+            <li><a href="#brands" data-ru="Бренды" data-uz="Brendlar">Бренды</a></li>
+            <li><a href="#video" data-ru="Видео" data-uz="Video">Видео</a></li>
+        </ul>
+        <button id="langToggle">UZ</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 data-ru="Моя Супер Машина 🔥" data-uz="Mening Super Mashinam 🔥" class="hero-title">Моя Супер Машина 🔥
+            </h2>
+            <p data-ru="Скорость. Мощность. Дизайн." data-uz="Tezlik. Quvvat. Dizayn." class="hero-desc">Скорость.
+                Мощность. Дизайн.</p>
+            <br>
+            <button data-ru="Смотреть" data-uz="Ko'rish" class="hero-btn"
+                onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">Смотреть</button>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <h2 class="section-title" data-ru="Галерея Суперкаров" data-uz="Super Car Galereya">Галерея Суперкаров</h2>
+        <div class="swiper infiniteSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img
+                        src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200"></div>
+                <div class="swiper-slide"><img
+                        src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200"></div>
+                <div class="swiper-slide"><img
+                        src="https://images.unsplash.com/photo-1549924231-f129b911e442?q=80&w=1200"></div>
+                <div class="swiper-slide"><img
+                        src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=1200"></div>
+                <div class="swiper-slide"><img
+                        src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section id="brands">
+        <h2 class="section-title" data-ru="Известные Авто Бренды" data-uz="Mashhur Brendlar">Известные Авто Бренды</h2>
+        <div class="brand-grid">
+
+            <!-- 1 -->
+            <a href="https://www.ferrari.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/ferrari/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Ferrari" data-uz="Ferrari">Ferrari</h3>
+                    <p data-ru="Итальянский производитель суперкаров. Легенда Формулы-1."
+                        data-uz="Italiya supercar brendi. Formula 1 afsonasi.">Итальянский производитель суперкаров.
+                        Легенда Формулы-1.</p>
+                </div>
+            </a>
+
+            <!-- 2 -->
+            <a href="https://www.lamborghini.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/lamborghini/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Lamborghini" data-uz="Lamborghini">Lamborghini</h3>
+                    <p data-ru="Агрессивный дизайн и мощный двигатель V12."
+                        data-uz="Agresiv dizayn va V12 dvigatel kuchi.">Агрессивный дизайн и мощный двигатель V12.</p>
+                </div>
+            </a>
+
+            <!-- 3 -->
+            <a href="https://www.bugatti.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/bugatti/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Bugatti" data-uz="Bugatti">Bugatti</h3>
+                    <p data-ru="Король гиперкаров. Скорость 400+ км/ч." data-uz="Hypercar qiroli. 400+ km/h tezlik.">
+                        Король гиперкаров. Скорость 400+ км/ч.</p>
+                </div>
+            </a>
+
+            <!-- 4 -->
+            <a href="https://www.porsche.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/porsche/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Porsche" data-uz="Porsche">Porsche</h3>
+                    <p data-ru="Немецкий спорт и премиум качество." data-uz="Sport va premium mukammal uyg‘unligi.">
+                        Немецкий спорт и премиум качество.</p>
+                </div>
+            </a>
+
+            <!-- 5 -->
+            <a href="https://www.mclaren.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/mclaren/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="McLaren" data-uz="McLaren">McLaren</h3>
+                    <p data-ru="Британские инновации в мире суперкаров." data-uz="Britaniya supercar innovatsiyasi.">
+                        Британские инновации в мире суперкаров.</p>
+                </div>
+            </a>
+
+            <!-- 6 -->
+            <a href="https://www.tesla.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/tesla/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Tesla" data-uz="Tesla">Tesla</h3>
+                    <p data-ru="Электрическое будущее автомобилей." data-uz="Elektr mashinalarning kelajagi.">
+                        Электрическое будущее автомобилей.</p>
+                </div>
+            </a>
+
+            <!-- 7 -->
+            <a href="https://www.bmw.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/mercedes/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Mercedes" data-uz="Mercedes">BMW</h3>
+                    <p data-ru="Немецкая инженерная точность и люкс." data-uz="Nemis muhandisligi va lyuks.">Спортивный
+            характер и динамика.</p>
+                </div>
+            </a>
+
+            <!-- 8 -->
+            <a href="https://www.mercedes-benz.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/bmw/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="BMW" data-uz="BMW">Mercedes</h3>
+                    <p data-ru="Спортивный характер и динамика." data-uz="Sportiv xarakter va dinamika.">Немецкая
+                        инженерная точность и люкс.</p>
+                </div>
+            </a>
+
+            <!-- 9 -->
+            <a href="https://www.audi.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/audi/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Audi" data-uz="Audi">Audi</h3>
+                    <p data-ru="Современные технологии и система Quattro."
+                        data-uz="Zamonaviy texnologiya va Quattro tizimi.">Современные технологии и система Quattro.</p>
+                </div>
+            </a>
+
+            <!-- 10 -->
+            <a href="https://www.rolls-roycemotorcars.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/rollsroyce/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Rolls Royce" data-uz="Rolls Royce">Rolls Royce</h3>
+                    <p data-ru="Максимальная роскошь и комфорт." data-uz="Maksimal lyuks va komfort.">Максимальная
+                        роскошь и комфорт.</p>
+                </div>
+            </a>
+
+            <!-- 11 -->
+            <a href="https://www.bentleymotors.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/bentley/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Bentley" data-uz="Bentley">Bentley</h3>
+                    <p data-ru="Сочетание мощности и люкса." data-uz="Kuch va lyuks uyg‘unligi.">Сочетание мощности и
+                        люкса.</p>
+                </div>
+            </a>
+
+            <!-- 12 -->
+            <a href="https://www.nissan-global.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/nissan/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Nissan" data-uz="Nissan">Nissan</h3>
+                    <p data-ru="Легендарный GT-R." data-uz="Legendary GT-R.">Легендарный GT-R.</p>
+                </div>
+            </a>
+
+            <!-- 13 -->
+            <a href="https://www.toyota-global.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/toyota/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Toyota" data-uz="Toyota">Toyota</h3>
+                    <p data-ru="Спортивная классика Supra." data-uz="Sport klassika Supra.">Спортивная классика Supra.
+                    </p>
+                </div>
+            </a>
+
+            <!-- 14 -->
+            <a href="https://www.honda.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/honda/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Honda" data-uz="Honda">Honda</h3>
+                    <p data-ru="Известные спорт и надежность." data-uz="Mashhur sport va ishonchlilik.">Известные спорт
+                        и надежность.</p>
+                </div>
+            </a>
+
+            <!-- 15 -->
+            <a href="https://www.lotuscars.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/lotus/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Lotus" data-uz="Lotus">Lotus</h3>
+                    <p data-ru="Легкие и маневренные спорткары." data-uz="Yengil va manevrli sport mashinalar.">Легкие и
+                        маневренные спорткары.</p>
+                </div>
+            </a>
+
+            <!-- 16 -->
+            <a href="https://www.ford.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/ford/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Ford" data-uz="Ford">Ford</h3>
+                    <p data-ru="Американская мощь и Mustang." data-uz="Amerika kuchi va Mustang.">Американская мощь и
+                        Mustang.</p>
+                </div>
+            </a>
+
+            <!-- 17 -->
+            <a href="https://www.chevrolet.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/chevrolet/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Chevrolet" data-uz="Chevrolet">Chevrolet</h3>
+                    <p data-ru="Популярные американские спорткары." data-uz="Mashhur Amerika sport mashinalari.">
+                        Популярные американские спорткары.</p>
+                </div>
+            </a>
+
+            <!-- 18 -->
+            <a href="https://www.kia.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/kia/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Kia" data-uz="Kia">Kia</h3>
+                    <p data-ru="Современные корейские спорткары." data-uz="Zamonaviy koreys sport mashinalari.">
+                        Современные корейские спорткары.</p>
+                </div>
+            </a>
+
+            <!-- 19 -->
+            <a href="https://www.hyundai.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/hyundai/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Hyundai" data-uz="Hyundai">Hyundai</h3>
+                    <p data-ru="Надежные и современные спорткары." data-uz="Ishonchli va zamonaviy sport mashinalar.">
+                        Надежные и современные спорткары.</p>
+                </div>
+            </a>
+
+            <!-- 20 -->
+            <a href="https://www.subaru.com" target="_blank" class="brand-card">
+                <img src="https://picsum.photos/seed/subaru/500/300">
+                <div class="brand-info">
+                    <h3 data-ru="Subaru" data-uz="Subaru">Subaru</h3>
+                    <p data-ru="Легендарные AWD спорткары." data-uz="Afsonaviy AWD sport mashinalar.">Легендарные AWD
+                        спорткары.</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section id="video" class="video-section">
+        <h2 class="section-title" data-ru="Видео о Суперкаре" data-uz="Super Mashina Videosi">Видео о Суперкаре</h2>
+        <iframe src="https://www.youtube.com/embed/5JYp9eGC3Cc" allowfullscreen></iframe>
+    </section>
+
+    <footer data-ru="© 2026 Моя Супер Машина | Все права защищены"
+        data-uz="© 2026 Mening Super Mashinam | Barcha huquqlar himoyalangan">
+        © 2026 Моя Супер Машина | Все права защищены
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Infinite gallery
+        new Swiper(".infiniteSwiper", {
+            loop: true,
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            speed: 5000,
+            freeMode: true,
+            autoplay: { delay: 0, disableOnInteraction: false },
+            allowTouchMove: false
+        });
+
+        // Toggle language
+        const toggleBtn = document.getElementById('langToggle');
+        let currentLang = 'ru';
+        toggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ru' ? 'uz' : 'ru';
+            document.querySelectorAll('[data-uz]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+            toggleBtn.textContent = currentLang === 'ru' ? 'UZ' : 'РУС';
+        });
+    </script>
+</body>
+
+</html>
